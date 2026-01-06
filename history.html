@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="icon"  href="sdaround.png">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      background: white;
+      border-bottom: 2px solid #ccc;
+    }
+
+    .header img {
+      height: auto;
+      width: 100%;
+      margin-right: 15px;
+    }
+
+    .header-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header-text h1 {
+      margin: 0;
+      color: #004080;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .header-text p {
+      margin: 0;
+      font-size: 14px;
+      color: #333;
+    }
+
+    /* Navigation bar */
+    .navbar {
+      background-color: #00a2e8;
+      display: flex;
+      justify-content: center;
+      position: sticky;
+      top: 0;
+    }
+
+    .navbar ul {
+      list-style: none;
+      margin: 0;
+      padding: 7px;
+      display: flex;
+    }
+
+    .navbar li {
+      position: relative;
+    }
+
+    .navbar a {
+      display: block;
+      color: white;
+      padding: 12px 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .navbar a:hover {
+      background-color: #1E93AB;
+      border-radius: 8px;
+    }
+
+    /* Dropdown menu */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 180px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: #1E93AB;
+      padding: 10px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+
+    .navbar li:hover .dropdown-content {
+      display: block;
+    }
+
+    
+     .footer {
+      background-color: #222;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .footer-top {
+      background-color: #00a3dd;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .footer-top span {
+      font-size: 15px;
+    }
+
+    .footer-top .social-icons i {
+      color: white;
+      margin-left: 15px;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .footer-top .social-icons i:hover {
+      color: #ddd;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 40px 30px;
+      background-color: #1c1c1c;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 250px;
+      margin-bottom: 20px;
+    }
+
+    .footer-column h3 {
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .footer-column p, 
+    .footer-column a {
+      color: #ccc;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .footer-column a:hover {
+      color: #fff;
+    }
+
+    .footer-contact i {
+      margin-right: 8px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding: 15px;
+      background-color: #111;
+      font-size: 13px;
+      color: #888;
+    }
+
+    @media screen and (max-width: 768px) {
+      .footer-content {
+        flex-direction: column;
+      }
+    }
+
+body{
+     font-family: Arial, sans-serif;
+      margin: 40px;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .left-img, .right-img {
+      flex: 1;
+      max-width: 400px;
+    }
+
+    .left-img img, .right-img img {
+      width: 100%;
+      height: auto;
+      border: 1px solid #ccc;
+    }
+
+    .content {
+      flex: 2;
+      min-width: 300px;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #333;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-top: 30px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    .image-caption {
+      font-weight: bold;
+      text-align: center;
+      margin-top: 5px;
+    }
+
+    .breadcrumb {
+      margin-bottom: 20px;
+      font-size: 14px;
+      background: #D3DAD9;
+      padding: 10px;
+      margin-top: 10px;
+    }
+
+    .breadcrumb a {
+      text-decoration: none;
+      color: #0073e6;
+    }
+
+    </style>
+</head>
+    <body>
+
+      
+
+       <div class="header">
+    <img src="img/sda-pasiansi.png" alt="SDA pasiansi Logo">
+  </div>
+
+  <div class="navbar">
+    <ul>
+      <li><a href="PAMSHT.html">Home</a></li>
+
+      <li>
+        <a href="#">About Us</a>
+        <div class="dropdown-content">
+          <a href="#">History</a>
+          <a href="#">Leadership</a>
+        </div>
+      </li>
+
+      <li>
+        <a href="#">Services</a>
+        <div class="dropdown-content">
+          <a href="#">Outpatient</a>
+          <a href="#">Inpatient</a>
+          <a href="#">Special Clinics</a>
+        </div>
+      </li>
+
+      <li><a href="HOD.html">HOD</a></li>
+      <li><a href="appointment.html">Make Appointment</a></li>
+      <li><a href="CONTACT.html">Contact us</a></li>
+    </ul>
+  </div>
+
+  <div class="breadcrumb">
+    <a href="PAMSHT.html">Home</a> / History
+  </div>
+
+ <div class="container">
+    <div class="left-img">
+      <img src="img/jengo.jpg" alt="Historical image of BMC">
+      <div class="image-caption">TULIPO TOKA</div>
+    </div>
+
+    <div class="content">
+      <h1>SDA Pasiansi hospital</h1>
+      <p><strong>SDA Pasiansi Hospital</strong> is a faith-based healthcare institution founded by the Seventh-day Adventist Church with the mission of providing high-quality medical services to all people, regardless of religious affiliation. Established to uphold the church’s long-standing values of compassion, service, and holistic healing, the hospital operates as a registered entity under the United Republic of Tanzania’s Companies Act of 2002, officially recorded in 2020 with registration number <strong>193026</strong></p>
+
+      <p>It is fully compliant with the Ministry of Health and Social Welfare guidelines, ensuring that its operations meet national healthcare standards while preserving its faith-driven ethos. Situated in the Pasiansi area of Mwanza Region, the hospital extends its services to the broader communities of Mwanza and Simiyu regions, covering key areas around Lake Victoria where access to quality healthcare is vital.
+</p>
+    </div>
+
+    <div class="right-img">
+      <img src="img/jengo.jpg" alt="Surgical team at BMC">
+      <div class="image-caption">TULIPO TOKA - VYUMBA VYA UPASUAJI</div>
+    </div>
+  </div>
+
+  <div class="content">
+    <p style="text-align: justify;">The hospital’s history dates back to <strong>1972</strong>, when German missionaries established a small clinic in Mwanza town to meet the community’s growing health needs .Initially located in Kirumba, the facility was later relocated to Ghana Street to improve service delivery and accommodate increasing patient numbers. Eventually, its headquarters and main operations were moved to Pasiansi, where it has since transformed into a modern, fully equipped hospital. Over the decades, SDA Pasiansi Hospital has evolved from a modest mission clinic into a dynamic health institution, combining its missionary roots with contemporary medical standards to better serve the region’s diverse population.
+
+Since its relocation and modernization, the hospital has experienced steady growth in both capacity and capability.  </p>
+
+    <p style="text-align: justify;">This progress is driven by its ability to adapt to the rapidly changing demands of healthcare, shaped by competition, economic shifts, social needs, and technological advancements. SDA Pasiansi Hospital prides itself on its agility introducing new medical technologies, expanding its range of specialized services, and refining patient care protocols to match global best practices. The hospital’s expansion is not just in infrastructure but also in reputation, becoming a trusted name for dependable, compassionate, and affordable medical care in the Lake Victoria zone.</p>
+
+<p style="text-align: justify;"></p>Today, SDA Pasiansi Hospital stands as a model of faith-inspired excellence in healthcare. Its team of highly skilled physicians, medical specialists, and compassionate nursing staff work collaboratively to provide personalized care across multiple disciplines. Advanced diagnostic equipment, evidence-based treatment methods, and a culture of empathy ensure that every patient receives the highest standard of care from diagnosis through recovery. Whether delivering routine check-ups, managing chronic conditions, or performing life-saving interventions, the hospital remains steadfast in its mission to safeguard the health and dignity of every individual it serves. In doing so, it carries forward the legacy of its founders while embracing innovation to meet the health challenges of today and tomorrow. </p>
+  </div>
+
+<footer class="footer">
+    
+    <!-- Social bar -->
+    <div class="footer-top">
+      <span>Get connected with us on social networks:</span>
+      <div class="social-icons">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+       <a href="https://youtu.be/rPrAmJNm2DA?si=-OCws3psAahFqaA2"><i class="fab fa-youtube"></i></a> 
+      </div>
+    </div>
+
+    <!-- Main Footer Content -->
+    <div class="footer-content">
+
+      <!-- Left Column -->
+      <div class="footer-column">
+        <h3>SDA Pasiansi Hospital</h3>
+        <p>
+          SDA Pasiansi Hospital is a referral, consultant and university teaching hospital 
+          for the Lake and Western zones of the United Republic of Tanzania. 
+          It is situated along the shores of Lake Victoria in Mwanza City. 
+          It has over 950 beds and over 1300 employees.
+        </p>
+      </div>
+
+      <!-- Middle Column -->
+      <div class="footer-column">
+        <h3>QUICK LINKS</h3>
+        <a href="#">Tanzania Episcopal Conference (TEC)</a>
+        <a href="#">Ministry of Health (MoH)</a>
+        <a href="#">Muhimbili National Hospital (MNH)</a>
+        <a href="#">Medical Council of Tanganyika (MCT)</a>
+        <a href="#">Tanzania Medicines & Medical Devices Authority (TMDA)</a>
+        <a href="#">National Institute for Medical Research (NIMR)</a>
+        <a href="#">Public Service Management</a>
+      </div>
+
+      <!-- Right Column -->
+      <div class="footer-column footer-contact">
+        <h3>CONTACT</h3>
+        <a href="https://maps.app.goo.gl/aCU249Gdrx4cGRi39"><i class="fas fa-map-marker-alt"></i> SDA Pasiansi Hospital</a>
+        <p><i class="fas fa-envelope"></i> info@sdapasiansihospital.org</p>
+        <p><i class="fas fa-phone"></i> +255 765 367 644</p>
+        <p><i class="fas fa-fax"></i> +255 747 178 905</p>
+        <p><i class="fas fa-mail-bulk"></i> P.O.Box 104</p>
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      © 2025 Copyright: All rights reserved SDA Pasiansi Hospital
+    </div>
+    
+  </footer>
+
+    </body>
+</html>

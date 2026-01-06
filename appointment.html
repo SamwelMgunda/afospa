@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Make Appointment - SDA Pasiansi Hospital</title>
+  <link rel="icon" href="sdaround.png" >
+  
+         <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet" />
+         <link href="/your-path-to-fontawesome/css/solid.css" rel="stylesheet" />
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style> 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f8fb;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+   /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      background: white;
+      border-bottom: 2px solid #ccc;
+    }
+
+    .header img {
+      height: auto;
+      width: 100%;
+      margin-right: 15px;
+    }
+
+    .header-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header-text h1 {
+      margin: 0;
+      color: #004080;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .header-text p {
+      margin: 0;
+      font-size: 14px;
+      color: #333;
+    }
+
+    /* Navigation bar */
+    .navbar {
+      background-color: #00a2e8;
+      display: flex;
+      justify-content: center;
+      position: sticky;
+      top: 0;
+    }
+
+    .navbar ul {
+      list-style: none;
+      margin: 0;
+      padding: 7px;
+      display: flex;
+    }
+
+    .navbar li {
+      position: relative;
+    }
+
+    .navbar a {
+      display: block;
+      color: white;
+      padding: 12px 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .navbar a:hover {
+      background-color: #1E93AB;
+      border-radius: 8px;
+    }
+
+    /* Dropdown menu */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 180px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: #1E93AB;
+      padding: 10px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+
+    .navbar li:hover .dropdown-content {
+      display: block;
+    }
+
+
+
+
+    .breadcrumb {
+      margin-bottom: 20px;
+      font-size: 14px;
+      background: #D3DAD9;
+      padding: 10px;
+      margin-top: 10px;
+    }
+
+    .breadcrumb a {
+      text-decoration: none;
+      color: #0073e6;
+    }
+
+    .card {
+      display: flex;
+      background: #fff;
+      border: 1px solid #00aaff;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      overflow: hidden;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .card img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      padding: 10px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+      flex: 1;
+    }
+
+    .card-content h2 {
+      margin: 0;
+      font-size: 20px;
+      color: #333;
+    }
+
+    .card-content h4 {
+      margin: 5px 0 15px 0;
+      font-size: 15px;
+      font-weight: normal;
+      color: #666;
+    }
+
+    .card-content h3 {
+      font-size: 16px;
+      margin-bottom: 5px;
+      color: #444;
+    }
+
+    .card-content p {
+      margin: 0 0 10px 0;
+      color: #444;
+    }
+
+    ul {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .appointment-form {
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .appointment-form h2 {
+      margin-bottom: 25px;
+      text-align: center;
+      color: #00aaff;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background-color:  #00a2e8;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #00695c;
+    }
+
+    
+     .footer {
+      background-color: #222;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .footer-top {
+      background-color: #00a3dd;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .footer-top span {
+      font-size: 15px;
+    }
+
+    .footer-top .social-icons i {
+      color: white;
+      margin-left: 15px;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .footer-top .social-icons i:hover {
+      color: #ddd;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 40px 30px;
+      background-color: #1c1c1c;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 250px;
+      margin-bottom: 20px;
+    }
+
+    .footer-column h3 {
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .footer-column p, 
+    .footer-column a {
+      color: #ccc;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .footer-column a:hover {
+      color: #fff;
+    }
+
+    .footer-contact i {
+      margin-right: 8px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding: 15px;
+      background-color: #111;
+      font-size: 13px;
+      color: #888;
+    }
+
+
+    @media (max-width: 600px) {
+      .appointment-form {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+    <!-- Header -->
+  <div class="header">
+    <img src="img/sda-pasiansi.png" alt="SDA pasiansi Logo">
+  </div>
+
+  <div class="navbar">
+    <ul>
+      <li><a href="PAMSHT.html">Home</a></li>
+
+      <li>
+        <a href="#">About Us</a>
+        <div class="dropdown-content">
+          <a href="history.html">History</a>
+       <a href="executive.html">Executive Management</a>
+          <a href="organization.html">Organization Structure</a>
+        </div>
+      </li>
+
+    
+
+      <li>
+        <a href="#">Services</a>
+        <div class="dropdown-content">
+          <a href="#">Outpatient</a>
+          <a href="#">Inpatient</a>
+          <a href="#">Special Clinics</a>
+        </div>
+      </li>
+
+      <li><a href="HOD.html">HOD</a></li>
+      <li><a href="appointment.html">Make Appointment</a></li>
+      <li><a href="CONTACT.html">Contact us</a></li>
+    </ul>
+  </div>
+
+
+  <main>
+    <form class="appointment-form" action="https://api.web3forms.com/submit" method="POST">
+      <h2>Book Your Appointment</h2>
+
+      <div class="form-group">
+        <input type="hidden" name="access_key" value="b5bbb92f-ca45-43a3-9968-233c3a78b0ae">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" name="fullname" required />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" />
+      </div>
+
+      <div class="form-group">
+        <label for="department">Department</label>
+        <select id="department" name="department">
+          <option value="general">General Consultation</option>
+          <option value="pediatrics">Optics</option>
+          <option value="dental">Dental</option>
+          <option value="maternity">Maternity</option>
+          <option value="maternity">Radioloy</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="date">Preferred Date</label>
+        <input type="date" id="date" name="date" required />
+      </div>
+
+      <div class="form-group">
+        <label for="time">Preferred Time</label>
+        <input type="time" id="time" name="time" required />
+      </div>
+
+      <div class="form-group">
+        <label for="message">Additional Message</label>
+        <textarea id="message" name="message" placeholder="Any specific concerns?"></textarea>
+      </div>
+
+      <button type="submit">Submit Appointment</button>
+    </form>
+  </main>
+
+  <footer class="footer">
+    
+    <!-- Social bar -->
+    <div class="footer-top">
+      <span>Get connected with us on social networks:</span>
+      <div class="social-icons">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+       <a href="https://youtu.be/rPrAmJNm2DA?si=-OCws3psAahFqaA2"><i class="fab fa-youtube"></i></a> 
+      </div>
+    </div>
+
+    <!-- Main Footer Content -->
+    <div class="footer-content">
+
+      <!-- Left Column -->
+      <div class="footer-column">
+        <h3>SDA Pasiansi Hospital</h3>
+        <p>
+          SDA Pasiansi Hospital is a referral, consultant and university teaching hospital 
+          for the Lake and Western zones of the United Republic of Tanzania. 
+          It is situated along the shores of Lake Victoria in Mwanza City. 
+          It has over 950 beds and over 1300 employees.
+        </p>
+      </div>
+
+      <!-- Middle Column -->
+      <div class="footer-column">
+        <h3>QUICK LINKS</h3>
+        <a href="#">Tanzania Episcopal Conference (TEC)</a>
+        <a href="#">Ministry of Health (MoH)</a>
+        <a href="#">Muhimbili National Hospital (MNH)</a>
+        <a href="#">Medical Council of Tanganyika (MCT)</a>
+        <a href="#">Tanzania Medicines & Medical Devices Authority (TMDA)</a>
+        <a href="#">National Institute for Medical Research (NIMR)</a>
+        <a href="#">Public Service Management</a>
+      </div>
+
+      <!-- Right Column -->
+      <div class="footer-column footer-contact">
+        <h3>CONTACT</h3>
+        <a href="https://maps.app.goo.gl/aCU249Gdrx4cGRi39"><i class="fas fa-map-marker-alt"></i> SDA Pasiansi Hospital</a>
+        <p><i class="fas fa-envelope"></i> info@sdapasiansihospital.org</p>
+        <p><i class="fas fa-phone"></i> +255 765 367 644</p>
+        <p><i class="fas fa-fax"></i> +255 747 178 905</p>
+        <p><i class="fas fa-mail-bulk"></i> P.O.Box 104</p>
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      © 2025 Copyright: All rights reserved SDA Pasiansi Hospital
+    </div>
+    
+  </footer>
+
+   <script>
+            var form = document.getElementById('sheetdb-form');
+        form.addEventListener("submit", e => {
+          e.preventDefault();
+          fetch(form.action, {
+              method : "POST",
+              body: new FormData(document.getElementById("sheetdb-form")),
+          }).then(
+              response => response.json()
+          ).then((html) => {
+            // you can put any JS code here
+            window.open('page2.html', '_blank');
+
+          });
+        });
+        </script>
+</body>
+</html>

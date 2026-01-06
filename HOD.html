@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SDA Pasiansi Hospital</title>
+  <link rel="icon"  href="sdaround.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f9fc;
+
+    }
+
+/* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      background: white;
+      border-bottom: 2px solid #ccc;
+    }
+
+    .header img {
+      height: auto;
+      width: 100%;
+      margin-right: 15px;
+    }
+
+    .header-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header-text h1 {
+      margin: 0;
+      color: #004080;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .header-text p {
+      margin: 0;
+      font-size: 14px;
+      color: #333;
+    }
+
+    /* Navigation bar */
+    .navbar {
+      background-color: #00a2e8;
+      display: flex;
+      justify-content: center;
+       position: sticky;
+      top: 0;
+    }
+
+    .navbar ul {
+      list-style: none;
+      margin: 0;
+      padding: 7px;
+      display: flex;
+    }
+
+    .navbar li {
+      position: relative;
+    }
+
+    .navbar a {
+      display: block;
+      color: white;
+      padding: 12px 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .navbar a:hover {
+      background-color: #1E93AB;
+      border-radius: 8px;
+    }
+
+    /* Dropdown menu */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 180px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: #1E93AB;
+      padding: 10px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+
+    .navbar li:hover .dropdown-content {
+      display: block;
+    }
+
+
+
+
+    .breadcrumb {
+      margin-bottom: 20px;
+      font-size: 14px;
+      background: #D3DAD9;
+      padding: 10px;
+      margin-top: 10px;
+    }
+
+    .breadcrumb a {
+      text-decoration: none;
+      color: #0073e6;
+    }
+
+    .card {
+      display: flex;
+      background: #fff;
+      border: 1px solid #00aaff;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      overflow: hidden;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .card img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      padding: 10px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+      flex: 1;
+    }
+
+    .card-content h2 {
+      margin: 0;
+      font-size: 20px;
+      color: #333;
+    }
+
+    .card-content h4 {
+      margin: 5px 0 15px 0;
+      font-size: 15px;
+      font-weight: normal;
+      color: #666;
+    }
+
+    .card-content h3 {
+      font-size: 16px;
+      margin-bottom: 5px;
+      color: #444;
+    }
+
+    .card-content p {
+      margin: 0 0 10px 0;
+      color: #444;
+    }
+
+    ul {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .card img {
+        width: 100%;
+      }
+    }
+
+
+    .accordion {
+      max-width: 900px;
+      margin: auto;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: #fff;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .accordion-header {
+      background: #fff;
+      cursor: pointer;
+      padding: 15px 20px;
+      font-size: 16px;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s;
+    }
+
+    .accordion-header:hover {
+      background: #f1f1f1;
+    }
+
+    .accordion-header i {
+      transition: transform 0.3s;
+    }
+
+    .accordion-header.active i {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 15px 20px;
+      font-size: 14px;
+      color: #555;
+      background: #fafafa;
+    }
+
+
+     .footer {
+      background-color: #222;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .footer-top {
+      background-color: #00a3dd;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .footer-top span {
+      font-size: 15px;
+    }
+
+    .footer-top .social-icons i {
+      color: white;
+      margin-left: 15px;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .footer-top .social-icons i:hover {
+      color: #ddd;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 40px 30px;
+      background-color: #1c1c1c;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 250px;
+      margin-bottom: 20px;
+    }
+
+    .footer-column h3 {
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .footer-column p, 
+    .footer-column a {
+      color: #ccc;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .footer-column a:hover {
+      color: #fff;
+    }
+
+    .footer-contact i {
+      margin-right: 8px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding: 15px;
+      background-color: #111;
+      font-size: 13px;
+      color: #888;
+    }
+
+    @media screen and (max-width: 768px) {
+      .footer-content {
+        flex-direction: column;
+      }
+    }
+
+body{
+     font-family: Arial, sans-serif;
+      margin: 40px;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .left-img, .right-img {
+      flex: 1;
+      max-width: 400px;
+    }
+
+    .left-img img, .right-img img {
+      width: 100%;
+      height: auto;
+      border: 1px solid #ccc;
+    }
+
+    .content {
+      flex: 2;
+      min-width: 300px;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #333;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-top: 30px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+
+    .image-caption {
+      font-weight: bold;
+      text-align: center;
+      margin-top: 5px;
+    }
+
+    .profile-card {
+      display: flex;
+      background-color: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .profile-image {
+      flex: 0 0 250px;
+      background-color: #f0f0f0;
+    }
+
+    .profile-image img {
+      width: 100%;
+      height: 45%;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .profile-info {
+      padding: 30px;
+      flex: 1;
+    }
+
+    .profile-info h2 {
+      margin-top: 0;
+      font-size: 24px;
+    }
+
+    .profile-info h4 {
+      color: gray;
+      margin-top: -10px;
+      font-weight: normal;
+    }
+
+    .profile-info h3 {
+      margin-top: 30px;
+      font-size: 20px;
+    }
+
+    .profile-info ul {
+      padding-left: 20px;
+    }
+
+    .profile-info ul li {
+      margin-bottom: 15px;
+    }
+
+    .profile-info strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .leadership-box {
+            background-color: #f9f9f9;
+            border: 2px solid #a0d8ef;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 1200px;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 30px;
+        }
+
+        .person {
+            text-align: center;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .person img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .person h3 {
+            margin: 15px 0 5px;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .person p {
+            margin: 0;
+            font-size: 16px;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .team-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+  </style>
+</head>
+<body>
+
+      <!-- Header -->
+  <div class="header">
+    <img src="img/sda-pasiansi.png" alt="SDA pasiansi Logo">
+  </div>
+
+  <div class="navbar">
+    <ul>
+      <li><a href="PAMSHT.html">Home</a></li>
+
+      <li>
+        <a href="#">About Us</a>
+        <div class="dropdown-content">
+          <a href="history.html">History</a>
+         <a href="executive.html">Executive Management</a>
+          <a href="organization.html">Organization Structure</a>
+        </div>
+      </li>
+
+    
+
+      <li>
+        <a href="#">Services</a>
+        <div class="dropdown-content">
+          <a href="#">Outpatient</a>
+          <a href="#">Inpatient</a>
+          <a href="#">Special Clinics</a>
+        </div>
+      </li>
+
+      <li><a href="HOD.html">HOD</a></li>
+      <li><a href="appointment.html">Make Appointment</a></li>
+      <li><a href="CONTACT.html">Contact us</a></li>
+    </ul>
+  </div>
+
+  <div class="breadcrumb">
+    <a href="PAMSHT.html">Home</a> / Head of Departments
+  </div>
+
+ 
+ <div class="leadership-box">
+        <div class="team-container">
+            <!-- Person 1: Director General -->
+            <div class="person">
+                <img src="img/mabula.png" alt="Dr. Mabula Mayongela">
+                <h3>Dr.MABULA MAYONGELA</h3>
+                <p>Director General</p>
+            </div>
+
+            <!-- Person 2: Executive Director -->
+            <div class="person">
+                <img src="img/daudiii.jpg" alt="Jane Doe">
+                <h3>Eld.DAUDI SAYAYI</h3>
+                <p>Executive Officer</p>
+            </div>
+
+            <!-- Person 3: Treasurer -->
+            <div class="person">
+                <img src="img/kadinda1.jpg" alt="John Smith">
+                <h3>Eld.NG'WANISHI KADINDA</h3>
+                <p>Treasurer</p>
+            </div>
+        </div>
+    </div><br><br>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Legal Unit <i class="fa-solid fa-chevron-down"></i></div>
+      <div class="accordion-content">Details about Legal Unit...</div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Internal Auditing Unit <i class="fa-solid fa-chevron-down"></i></div>
+      <div class="accordion-content">Details about Internal Auditing Unit...</div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Procurement and Management Unit <i class="fa-solid fa-chevron-down"></i></div>
+      <div class="accordion-content">Details about Procurement and Management Unit...</div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Research and Consultancy Unit <i class="fa-solid fa-chevron-down"></i></div>
+      <div class="accordion-content">Details about Research and Consultancy Unit...</div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Project Manager Unit <i class="fa-solid fa-chevron-down"></i></div>
+      <div class="accordion-content">Details about Project Manager Unit...</div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Personal Assistant to the Director General Unit <i class="fa-solid fa-chevron-down"></i></div>
+      <div class="accordion-content">Details about this role...</div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Hospital Chaplain <i class="fa-solid fa-chevron-down"></i></div>
+      <div class="accordion-content">Details about Hospital Chaplain...</div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Town Clinic <i class="fa-solid fa-chevron-down"></i></div>
+      <div class="accordion-content">Details about Town Clinic...</div>
+    </div>
+  </div>
+
+  <script>
+    // Accordion functionality
+    const headers = document.querySelectorAll(".accordion-header");
+
+    headers.forEach(header => {
+      header.addEventListener("click", () => {
+        const content = header.nextElementSibling;
+        const isActive = header.classList.contains("active");
+
+        // Close all open items
+        document.querySelectorAll(".accordion-header").forEach(h => {
+          h.classList.remove("active");
+          h.nextElementSibling.style.display = "none";
+        });
+
+        // Toggle current
+        if (!isActive) {
+          header.classList.add("active");
+          content.style.display = "block";
+        }
+      });
+    });
+  </script>
+
+  <br><br>
+<footer class="footer">
+    
+    <!-- Social bar -->
+    <div class="footer-top">
+      <span>Get connected with us on social networks:</span>
+      <div class="social-icons">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+       <a href="https://youtu.be/rPrAmJNm2DA?si=-OCws3psAahFqaA2"><i class="fab fa-youtube"></i></a> 
+      </div>
+    </div>
+
+    <!-- Main Footer Content -->
+    <div class="footer-content">
+
+      <!-- Left Column -->
+      <div class="footer-column">
+        <h3>SDA Pasiansi Hospital</h3>
+        <p>
+          SDA Pasiansi Hospital is a referral, consultant and university teaching hospital 
+          for the Lake and Western zones of the United Republic of Tanzania. 
+          It is situated along the shores of Lake Victoria in Mwanza City. 
+          It has over 950 beds and over 1300 employees.
+        </p>
+      </div>
+
+      <!-- Middle Column -->
+      <div class="footer-column">
+        <h3>QUICK LINKS</h3>
+        <a href="#">Tanzania Episcopal Conference (TEC)</a>
+        <a href="#">Ministry of Health (MoH)</a>
+        <a href="#">Muhimbili National Hospital (MNH)</a>
+        <a href="#">Medical Council of Tanganyika (MCT)</a>
+        <a href="#">Tanzania Medicines & Medical Devices Authority (TMDA)</a>
+        <a href="#">National Institute for Medical Research (NIMR)</a>
+        <a href="#">Public Service Management</a>
+      </div>
+
+      <!-- Right Column -->
+      <div class="footer-column footer-contact">
+        <h3>CONTACT</h3>
+        <a href="https://maps.app.goo.gl/aCU249Gdrx4cGRi39"><i class="fas fa-map-marker-alt"></i> SDA Pasiansi Hospital</a>
+        <p><i class="fas fa-envelope"></i> info@sdapasiansihospital.org</p>
+        <p><i class="fas fa-phone"></i> +255 765 367 644</p>
+        <p><i class="fas fa-fax"></i> +255 747 178 905</p>
+        <p><i class="fas fa-mail-bulk"></i> P.O.Box 104</p>
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      © 2025 Copyright: All rights reserved SDA Pasiansi Hospital
+    </div>
+    
+  </footer>
+
+</body>
+</html>
